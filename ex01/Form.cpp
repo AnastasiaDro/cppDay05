@@ -6,7 +6,10 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : _name("Default"), _signGrade(1), _execGrade(150) {}
+Form::Form() :	_name("Default"),
+				_signGrade(1),
+				_execGrade(150),
+				_isSigned(false) {}
 
 Form::Form(std::string name, int signGrade, int execGrade) :	_name(name),
 																_signGrade(signGrade),
