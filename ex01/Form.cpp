@@ -43,7 +43,9 @@ void Form::setIsSigned(bool isSigned) {
 
 void Form::beSigned(const Bureaucrat &b) {
 	if (b.getGrade() > this->_signGrade)
-		throw Form::GradeTooLowException("SIGNING: grade too low for signing form!");
+		throw Form::GradeTooLowException("SIGNING: " + b.getName() + "  cannot sign  " + this->getName() + " because of low grade");
+	else
+		printMsg(b.getName() + " signs " + this->getName());
 }
 
 Form::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
