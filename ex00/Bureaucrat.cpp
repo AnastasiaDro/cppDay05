@@ -39,3 +39,7 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 	return out;
 }
 
+void	printMsg(std::string const &msg)
+{
+	std::cout << msg << std::endl;
+}
