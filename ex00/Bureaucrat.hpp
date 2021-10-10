@@ -30,7 +30,7 @@ public:
 //getters
 	const	std::string &getName() const;
 	int		getGrade() const;
-	void setGrade(int grade);
+	void	setGrade(int grade);
 
 //_grade operarions
 	void 	incGrade(int n);
