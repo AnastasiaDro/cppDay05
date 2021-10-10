@@ -38,20 +38,20 @@ int main() {
 		Form invForm1("invForm1", 50, 151);
 	}
 	catch (Form::GradeTooLowException &e) {
-		printMsg("Form execGrade is too low");
+		printMsg("CATCH: Form execGrade is too low");
 	}
 	try{
 		printMsg("invalid execGradee: 0");
 		Form invForm3("invForm2", 50, 0);
 	}
 	catch (Form::GradeTooHighException &e) {
-		printMsg("Form signGrade is too high");
+		printMsg("CATCH: Form signGrade is too high");
 	}
 
 
 	printMsg("\n Let's sign valid forms, guys!");
 
-	printMsg("---TEST #1---");
+	printMsg("\n---TEST #1---");
 	printMsg("Tom and Form1 are first");
 	try {
 		form1.beSigned(tom); // can't
@@ -59,7 +59,7 @@ int main() {
 		std::cout << "CATCH: " << tom << " can't sign" << form1 << std::endl;
 	}
 
-	printMsg("---TEST #2---");
+	printMsg("\n---TEST #2---");
 	printMsg("Form2, Tom");
 	try {
 		form2.beSigned(tom); // can't
@@ -67,7 +67,7 @@ int main() {
 		std::cout << "CATCH: "  << tom << " can't sign" << form2 << std::endl;
 	}
 
-	printMsg("---TEST #3---");
+	printMsg("\n---TEST #3---");
 	printMsg("Form1, Susanne");
 	try {
 		form1.beSigned(susanne); // can't
@@ -75,7 +75,7 @@ int main() {
 		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
 	}
 
-	printMsg("---TEST #4---");
+	printMsg("\n---TEST #4---");
 	printMsg("Susanne, you're demoted");
 	try {
 		susanne.decrGrade(101);
@@ -91,7 +91,7 @@ int main() {
 		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
 	}
 
-	printMsg("---TEST #5---");
+	printMsg("\n---TEST #5---");
 	printMsg("Tom, you're promoted");
 	try {
 		tom.incGrade(50);
