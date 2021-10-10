@@ -8,41 +8,72 @@ int main() {
 	//naming constructor
 	Bureaucrat tom("Tom"); //autograde = 75
 	Bureaucrat susanne("Susanne", 1);
-	Form form("")
+	Form form1("Form1", 50, 5);
+	Form form2("Form2", 90, 100);
 
 	std:: cout	<< tom << std::endl;
 	std:: cout	<< susanne << std::endl;
+	std:: cout	<< form1 <<std::endl;
+	std:: cout	<< form2 <<std::endl;
 
-	printMsg("Hello, guys!");
+	printMsg("Let's sign, guys!");
+
+	printMsg("---TEST #1---");
+	printMsg("Tom and Form1 are first");
 	try {
-		susanne.incGrade(5);
-		tom.decrGrade(80); // has 75 now 75 + 80 = 155 but the lowest is 150
-	} catch (Bureaucrat::GradeTooHighException &e){
-		std::cout << susanne << " can't increment her grade" << std::endl;
-		//worked just first block
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << tom << " can't decrement his grade" << std::endl;
+		form1.beSigned(tom); // can't
+	} catch (Form::GradeTooLowException &e) {
+		std::cout << "CATCH: " << tom << " can't sign" << form1 << std::endl;
 	}
 
+	printMsg("---TEST #2---");
+	printMsg("Form2, Tom");
 	try {
-		tom.decrGrade(80); // has 75 now 75 + 80 = 155 but the lowest is 150
-		susanne.incGrade(5);
-	} catch (Bureaucrat::GradeTooHighException &e){
-		std::cout << susanne << " can't increment her grade" << std::endl;
-		//worked just first block
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << tom << " can't decrement his grade" << std::endl;
+		form2.beSigned(tom); // can't
+	} catch (Form::GradeTooLowException &e) {
+		std::cout << "CATCH: "  << tom << " can't sign" << form2 << std::endl;
 	}
 
+	printMsg("---TEST #3---");
+	printMsg("Form1, Susanne");
 	try {
-		tom.incGrade(40); // has 75 now 75 + 80 = 155 but the lowest is 150
-		susanne.decrGrade(100);
-	} catch (Bureaucrat::GradeTooHighException &e){
-		std::cout << susanne << " can't increment her grade" << std::endl;
+		form1.beSigned(susanne); // can't
+	} catch (Form::GradeTooLowException &e) {
+		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
+	}
+
+	printMsg("---TEST #4---");
+	printMsg("Susanne, you're demoted");
+	try {
+		susanne.decrGrade(101);
 	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << tom << " can't decrement his grade" << std::endl;
+		std::cout << "CATCH: " << susanne << " can't increment her grade" << std::endl;
+	}
+	std::cout << susanne << std::endl;
+
+	printMsg("Form1, Susanne");
+	try {
+		form1.beSigned(susanne); // can't
+	} catch (Form::GradeTooLowException &e) {
+		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
+	}
+
+	printMsg("---TEST #5---");
+	printMsg("Tom, you're promoted");
+	try {
+		tom.incGrade(50);
+	} catch (Bureaucrat::GradeTooLowException &e) {
+		std::cout << "CATCH: " << tom << " can't increment his grade" << std::endl;
 	}
 	std::cout << tom << std::endl;
-	std::cout << susanne << std::endl;
+
+	printMsg("Form1, Tom");
+	try {
+		form1.beSigned(tom); // can't
+	} catch (Form::GradeTooLowException &e) {
+		std::cout << "CATCH: " << tom << " can't sign" << form1 << std::endl;
+	}
+
+	printMsg("Oh, my God, it works! <OoO>");
 	return 0;
 }

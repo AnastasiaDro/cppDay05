@@ -35,6 +35,7 @@ public:
 	void setIsSigned(bool isSigned);
 
 	void beSigned(const Bureaucrat &b);
+
 //exception classes
 class GradeTooHighException : public std::logic_error
 	{
@@ -51,6 +52,6 @@ class GradeTooLowException : public std::logic_error
 
 std::ostream &operator<<(std::ostream &out, const Form &b);
 
-void	printMsg(std::string const &msg);
+
 
 #endif //DAY05_FORM_HPP

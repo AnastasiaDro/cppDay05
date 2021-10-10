@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : _name("Default"), _signGrade(1), _execGrade(150) {}
 
@@ -52,19 +53,22 @@ void Form::setIsSigned(bool isSigned) {
 
 void Form::beSigned(const Bureaucrat &b) {
 	if (b.getGrade() > this->_signGrade)
-		throw Form::GradeTooLowException("SIGNING: " + b.getName() + "  cannot sign  " + this->getName() + " because of low grade");
+	{
+		printMsg("SIGNING: " + b.getName() + "  cannot sign  " + this->getName() + " because of low grade");
+		throw Form::GradeTooLowException("GradeToLowException");
+	}
 	else
-		printMsg(b.getName() + " signs " + this->getName());
+		printMsg("SIGNING: " + b.getName() + " signs " + this->getName());
 }
 
 Form::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
 {
-	printMsg("FORM___EXCEPTION CAUGHT!!! GradeTooHighException");
+	printMsg("FORM___EXCEPTION CAUGHT!!! " + err);
 }
 
 Form::GradeTooLowException::GradeTooLowException(const std::string &err) : logic_error(err)
 {
-	printMsg("FORM___EXCEPTION CAUGHT!!! GradeTooLowException");
+	printMsg("FORM___EXCEPTION CAUGHT!!! " + err);
 }
 
 
@@ -74,9 +78,4 @@ std::ostream &operator<<(std::ostream &out, const Form &b)
 				 << ", form sign grade "
 				 << b.getSignGrade();
 	return out;
-}
-
-void	printMsg(std::string const &msg)
-{
-	std::cout << msg << std::endl;
 }
