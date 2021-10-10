@@ -10,25 +10,27 @@
 
 class Bureaucrat {
 private:
-	std::string	name;
-	int 		grade;
-	static const int min = 1;	//highest possible grade
-	static const int max = 150;	//lowest possible grade
+	Bureaucrat();
+	const std::string	_name;
+	int 				_grade;
+	static const int min = 1;	//highest possible _grade
+	static const int max = 150;	//lowest possible _grade
 
 public:
+	Bureaucrat(const std::string &name);
 //getters
 	const	std::string &getName() const;
 	int		getGrade() const;
 
-//grade operarions
+//_grade operarions
 	void 	incGrade(int n);
 	void 	decrGrade(int n);
 
-//setters
-//	void	setName(const std::string &name);
-//	int		getGrade() const;
-//	void	setGrade(int grade);
+//operators
+	Bureaucrat &operator=(const Bureaucrat &orig);
+
 };
 
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);
 
 #endif //DAY05_BUREAUCRAT_HPP
