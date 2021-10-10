@@ -54,6 +54,7 @@ void Form::setIsSigned(bool isSigned) {
 void Form::beSigned(const Bureaucrat &b) {
 	if (b.getGrade() > this->_signGrade)
 	{
+		this->_isSigned = true;
 		printMsg("SIGNING: " + b.getName() + "  cannot sign  " + this->getName() + " because of low grade");
 		throw Form::GradeTooLowException("GradeToLowException");
 	}
