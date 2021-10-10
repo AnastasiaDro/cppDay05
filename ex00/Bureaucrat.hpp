@@ -29,6 +29,16 @@ public:
 //operators
 	Bureaucrat &operator=(const Bureaucrat &orig);
 
+//exceptions
+class GradeTooHighException
+{
+
+};
+
+class GradeTooLowException
+{
+
+};
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);
