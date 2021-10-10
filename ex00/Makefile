@@ -2,7 +2,7 @@ NAME = ex00
 
 SRC = main.cpp Bureaucrat.cpp
 
-HEAD = Bureaucrat.cpp
+HEAD = Bureaucrat.hpp
 
 OBJS = $(SRC:.cpp=.o)
 

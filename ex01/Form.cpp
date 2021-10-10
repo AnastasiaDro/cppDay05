@@ -7,7 +7,16 @@
 
 Form::Form() : _name("Default"), _signGrade(1), _execGrade(150) {}
 
-Form::Form(const Form &orig) : _name(orig._name), _signGrade(orig._signGrade), _execGrade(orig._execGrade)
+Form::Form(std::string name, int signGrade, int execGrade) :	_name(name),
+																_signGrade(signGrade),
+																_execGrade(execGrade)
+{
+	_isSigned = false;
+}
+
+Form::Form(const Form &orig) :	_name(orig._name),
+								_signGrade(orig._signGrade),
+								_execGrade(orig._execGrade)
 {
 	*this = orig;
 }

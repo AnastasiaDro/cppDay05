@@ -1,8 +1,8 @@
 NAME = ex00
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
-HEAD = Bureaucrat.cpp
+HEAD = Bureaucrat.hpp Form.hpp
 
 OBJS = $(SRC:.cpp=.o)
 

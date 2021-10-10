@@ -1,16 +1,16 @@
 #include <iostream>
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main() {
 
 	//naming constructor
 	Bureaucrat tom("Tom"); //autograde = 75
-	//test of constructor and << operator
-	std:: cout	<< tom << std::endl;
-
-	//name + grade constructor
 	Bureaucrat susanne("Susanne", 1);
+	Form form("")
+
+	std:: cout	<< tom << std::endl;
 	std:: cout	<< susanne << std::endl;
 
 	printMsg("Hello, guys!");

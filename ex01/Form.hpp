@@ -20,6 +20,7 @@ private:
 	bool				_isSigned;
 
 public:
+	Form(std::string name, int signGrade, int execGrade);
 //copy constructor
 	Form(const Form &orig);
 //destructor
