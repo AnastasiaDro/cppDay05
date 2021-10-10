@@ -20,7 +20,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &orig)
 {
 	if (this == &orig)
 		return *this;
-	this->_grade = orig.getGrade();
+	this->_grade = orig._grade;
 	return *this;
 }
 
@@ -58,12 +58,12 @@ void Bureaucrat::setGrade(int grade) {
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
 {
-	printMsg("EXCEPTION CAUGHT!!! GradeTooHighException");
+	printMsg("BUREAUCRAT___EXCEPTION CAUGHT!!! GradeTooHighException");
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &err) : logic_error(err)
 {
-	printMsg("EXCEPTION CAUGHT!!! GradeTooLowException");
+	printMsg("BUREAUCRAT___EXCEPTION CAUGHT!!! GradeTooLowException");
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)

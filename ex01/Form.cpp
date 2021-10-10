@@ -2,6 +2,7 @@
 // Created by  Anastasia on 10.10.2021.
 //
 
+#include <iostream>
 #include "Form.hpp"
 
 Form::Form() : _name("Default"), _signGrade(1), _execGrade(150) {}
@@ -18,4 +19,48 @@ Form &Form::operator=(const Form &orig) {
 		return *this;
 	this->_isSigned = orig._isSigned;
 	return *this;
+}
+
+const std::string &Form::getName() const {
+	return _name;
+}
+
+int Form::getSignGrade() const {
+	return _signGrade;
+}
+
+int Form::getExecGrade() const {
+	return _execGrade;
+}
+
+bool Form::isIsSigned() const {
+	return _isSigned;
+}
+
+void Form::setIsSigned(bool isSigned) {
+	_isSigned = isSigned;
+}
+
+Form::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
+{
+	printMsg("FORM___EXCEPTION CAUGHT!!! GradeTooHighException");
+}
+
+Form::GradeTooLowException::GradeTooLowException(const std::string &err) : logic_error(err)
+{
+	printMsg("FORM___EXCEPTION CAUGHT!!! GradeTooLowException");
+}
+
+
+std::ostream &operator<<(std::ostream &out, const Form &b)
+{
+	std::cout	<< b.getName()
+				 << ", form sign grade "
+				 << b.getSignGrade();
+	return out;
+}
+
+void	printMsg(std::string const &msg)
+{
+	std::cout << msg << std::endl;
 }

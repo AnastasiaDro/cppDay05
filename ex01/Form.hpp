@@ -13,6 +13,18 @@ private:
 //empty constructor
 	Form();
 	const std::string	_name;
+public:
+	const std::string &getName() const;
+
+	int getSignGrade() const;
+
+	int getExecGrade() const;
+
+	bool isIsSigned() const;
+
+	void setIsSigned(bool isSigned);
+
+private:
 	const int			_signGrade;
 	const int 			_execGrade;
 	bool				_isSigned;
@@ -26,18 +38,21 @@ public:
 	Form &operator=(const Form &orig);
 
 
-	class GradeTooHighException : public std::logic_error
+class GradeTooHighException : public std::logic_error
 	{
 	public:
 		GradeTooHighException(const std::string &err);
 	};
 
-	class GradeTooLowException : public std::logic_error
+class GradeTooLowException : public std::logic_error
 	{
 	public:
 		GradeTooLowException(const std::string &err);
 	};
 };
 
+std::ostream &operator<<(std::ostream &out, const Form &b);
+
+void	printMsg(std::string const &msg);
 
 #endif //DAY05_FORM_HPP
