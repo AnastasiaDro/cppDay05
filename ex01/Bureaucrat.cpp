@@ -50,9 +50,9 @@ int Bureaucrat::getGrade() const {
 
 void Bureaucrat::setGrade(int grade) {
 	if (grade < min)
-		throw Bureaucrat::GradeTooHighException("Grade too high! The highest grade is 1");
+		throw Bureaucrat::GradeTooHighException("BUREAUCRAT: grade too high! The highest grade is 1");
 	if (grade > max)
-		throw Bureaucrat::GradeTooLowException("Grade too low! The lowest grade is 150");
+		throw Bureaucrat::GradeTooLowException("BUREAUCRAT: Grade too low! The lowest grade is 150");
 	_grade = grade;
 }
 

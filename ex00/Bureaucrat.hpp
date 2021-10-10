@@ -36,7 +36,7 @@ public:
 	void 	incGrade(int n);
 	void 	decrGrade(int n);
 
-//exceptions
+//exception classes
 class GradeTooHighException : public std::logic_error
 	{
 	public:
@@ -48,8 +48,6 @@ class GradeTooLowException : public std::logic_error
 	public:
 		GradeTooLowException(const std::string &err);
 	};
-
-
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);

@@ -7,6 +7,7 @@
 
 
 #include <string>
+#include "Bureaucrat.hpp"
 
 class Form {
 private:
@@ -32,6 +33,8 @@ public:
 	bool isSigned() const;
 	void setIsSigned(bool isSigned);
 
+	void beSigned(const Bureaucrat &b);
+//exception classes
 class GradeTooHighException : public std::logic_error
 	{
 	public:
