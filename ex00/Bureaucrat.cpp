@@ -49,9 +49,15 @@ void Bureaucrat::setGrade(int grade) {
 	_grade = grade;
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err) {}
+Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
+{
+	printMsg("EXCEPTION CAUGHT!!! GradeTooHighException");
+}
 
-Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &err) : logic_error(err){}
+Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &err) : logic_error(err)
+{
+	printMsg("EXCEPTION CAUGHT!!! GradeTooLowException");
+}
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 {
