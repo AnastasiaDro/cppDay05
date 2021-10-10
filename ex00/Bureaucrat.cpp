@@ -8,14 +8,16 @@ const std::string &Bureaucrat::getName() const {
 	return name;
 }
 
-void Bureaucrat::setName(const std::string &name) {
-	Bureaucrat::name = name;
+void Bureaucrat::incGrade(int n) {
+	this->grade += n;
+}
+
+void Bureaucrat::decrGrade(int n) {
+	this->grade -= n;
 }
 
 int Bureaucrat::getGrade() const {
 	return grade;
 }
 
-void Bureaucrat::setGrade(int grade) {
-	Bureaucrat::grade = grade;
-}
+

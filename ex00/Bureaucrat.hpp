@@ -18,10 +18,16 @@ private:
 public:
 //getters
 	const	std::string &getName() const;
-	void	setName(const std::string &name);
-//setters
 	int		getGrade() const;
-	void	setGrade(int grade);
+
+//grade operarions
+	void 	incGrade(int n);
+	void 	decrGrade(int n);
+
+//setters
+//	void	setName(const std::string &name);
+//	int		getGrade() const;
+//	void	setGrade(int grade);
 };
 
 
