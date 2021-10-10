@@ -13,7 +13,6 @@ private:
 	Bureaucrat();
 	const std::string	_name;
 	int 				_grade;
-private:
 	static const int min = 1;	//highest possible _grade
 	static const int max = 150;	//lowest possible _grade
 
@@ -33,26 +32,16 @@ public:
 	Bureaucrat &operator=(const Bureaucrat &orig);
 
 //exceptions
-class GradeTooHighException
+class GradeTooHighException : public std::logic_error
 	{
-	private:
-		std::string mErr;
 	public:
-		GradeTooHighException(const std::string &err) : mErr(err){}
-		const char *getErr() {
-			return mErr.c_str();
-		}
-	};
+		GradeTooHighException(const std::string &err);
+};
 
-class GradeTooLowException
+class GradeTooLowException : public std::logic_error
 	{
-	private:
-		std::string mErr;
 	public:
-		GradeTooLowException(const std::string &err) : mErr(err) {}
-		const char *getErr() {
-			return mErr.c_str();
-		}
+		GradeTooLowException(const std::string &err);
 	};
 
 

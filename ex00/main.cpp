@@ -34,7 +34,6 @@ int main() {
 		std::cout << tom << " can't decrement his grade" << std::endl;
 	}
 
-
 	try {
 		tom.incGrade(40); // has 75 now 75 + 80 = 155 but the lowest is 150
 		susanne.decrGrade(100);
