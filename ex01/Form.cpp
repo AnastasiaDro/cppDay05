@@ -11,10 +11,18 @@ Form::Form() :	_name("Default"),
 				_execGrade(150),
 				_isSigned(false) {}
 
-Form::Form(std::string name, int signGrade, int execGrade) :	_name(name),
+Form::Form(const std::string& name, int signGrade, int execGrade) :	_name(name),
 																_signGrade(signGrade),
 																_execGrade(execGrade)
 {
+	if (signGrade < min)
+		throw Form::GradeTooHighException("Invalid SIGN grade: GradeTooHigh");
+	if (signGrade > max)
+		throw Form::GradeTooLowException("Invalid SIGN grade: GradeTooLow");
+	if (execGrade < min)
+		throw Form::GradeTooHighException("Invalid EXEC grade: GradeTooHigh");
+	if (execGrade > max)
+		throw Form::GradeTooLowException("Invalid EXEC grade: GradeTooLow");
 	_isSigned = false;
 }
 
@@ -58,11 +66,11 @@ void Form::beSigned(const Bureaucrat &b) {
 	if (b.getGrade() > this->_signGrade)
 	{
 		this->_isSigned = true;
-		printMsg("SIGNING: " + b.getName() + "  cannot sign  " + this->getName() + " because of low grade");
+		printMsg("SIGNING: " + b.getName() + "  cannot sign " + this->getName() + " because of low grade");
 		throw Form::GradeTooLowException("GradeToLowException");
 	}
 	else
-		printMsg("SIGNING: " + b.getName() + " signs " + this->getName());
+		std::cout << "SIGNING: " << b << " signs " << *this << std::endl;
 }
 
 Form::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)

@@ -16,7 +16,40 @@ int main() {
 	std:: cout	<< form1 <<std::endl;
 	std:: cout	<< form2 <<std::endl;
 
-	printMsg("Let's sign, guys!");
+	printMsg("---TEST #0---");
+	printMsg("Let's try to create invalid forms!");
+	try{
+		printMsg("invalid signGrade: 151");
+		Form invForm1("invForm1", 151, 50);
+	}
+	catch (Form::GradeTooLowException &e) {
+		printMsg("Form signGrade is too low");
+	}
+	try{
+		printMsg("invalid signGrade: 0");
+		Form invForm2("invForm2", 0, 50);
+	}
+	catch (Form::GradeTooHighException &e) {
+		printMsg("Form signGrade is too high");
+	}
+
+	try{
+		printMsg("invalid execGrade: 151");
+		Form invForm1("invForm1", 50, 151);
+	}
+	catch (Form::GradeTooLowException &e) {
+		printMsg("Form execGrade is too low");
+	}
+	try{
+		printMsg("invalid execGradee: 0");
+		Form invForm3("invForm2", 50, 0);
+	}
+	catch (Form::GradeTooHighException &e) {
+		printMsg("Form signGrade is too high");
+	}
+
+
+	printMsg("\n Let's sign valid forms, guys!");
 
 	printMsg("---TEST #1---");
 	printMsg("Tom and Form1 are first");

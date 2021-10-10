@@ -13,14 +13,17 @@ class Form {
 private:
 //empty constructor
 	Form();
+
 	const std::string	_name;
-private:
 	const int			_signGrade;
 	const int 			_execGrade;
 	bool				_isSigned;
 
+	static const int min = 1;	//highest possible _grade
+	static const int max = 150;	//lowest possible _grade
+
 public:
-	Form(std::string name, int signGrade, int execGrade);
+	Form(const std::string& name, int signGrade, int execGrade);
 //copy constructor
 	Form(const Form &orig);
 //destructor
