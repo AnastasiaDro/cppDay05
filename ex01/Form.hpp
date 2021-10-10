@@ -13,17 +13,6 @@ private:
 //empty constructor
 	Form();
 	const std::string	_name;
-public:
-	const std::string &getName() const;
-
-	int getSignGrade() const;
-
-	int getExecGrade() const;
-
-	bool isIsSigned() const;
-
-	void setIsSigned(bool isSigned);
-
 private:
 	const int			_signGrade;
 	const int 			_execGrade;
@@ -36,7 +25,12 @@ public:
 	~Form();
 //assignment operator
 	Form &operator=(const Form &orig);
-
+//getters and setters
+	const std::string &getName() const;
+	int getSignGrade() const;
+	int getExecGrade() const;
+	bool isSigned() const;
+	void setIsSigned(bool isSigned);
 
 class GradeTooHighException : public std::logic_error
 	{

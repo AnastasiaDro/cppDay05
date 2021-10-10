@@ -33,7 +33,7 @@ int Form::getExecGrade() const {
 	return _execGrade;
 }
 
-bool Form::isIsSigned() const {
+bool Form::isSigned() const {
 	return _isSigned;
 }
 
