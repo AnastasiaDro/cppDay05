@@ -27,7 +27,6 @@ public:
 //execute
 	virtual void execute(Bureaucrat const & executor) const;
 
-	static std::string drawTree();
 };
 
 std::ostream &operator<<(std::ostream &out, RobotomyRequestForm scf);

@@ -2,4 +2,45 @@
 // Created by Cesar Erebus on 10/12/21.
 //
 
+#include <iostream>
 #include "PresidentialPardonForm.hpp"
+
+
+PresidentialPardonForm::PresidentialPardonForm() : Form("RobotomyRequestForm", 72, 45) {}
+
+PresidentialPardonForm::PresidentialPardonForm(std::string &target) : Form("RobotomyRequestForm", 72, 45),
+																_target(target){}
+
+const std::string &PresidentialPardonForm::getTarget(){
+	return this->_target;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &orig) : Form(orig.getName(), orig._signGrade, orig.getExecGrade())
+{
+	*this = orig;
+}
+
+PresidentialPardonForm::~PresidentialPardonForm() {}
+
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &orig) {
+	if (this == &orig)
+		return *this;
+	this->_target = orig._target;
+	return *this;
+}
+
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
+	printMsg(this->_target + " has been pardoned by Zafod Beeblebrox");
+}
+
+std::ostream &operator<<(std::ostream &out, PresidentialPardonForm scf)
+{
+	std::cout	<< scf.getName()
+				 << ", form sign grade "
+				 << scf.getSignGrade()
+				 << ", exec grade "
+				 << scf.getExecGrade()
+				 << ", target "
+				 << scf.getTarget();
+	return out;
+}
