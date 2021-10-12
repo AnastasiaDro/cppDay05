@@ -2,13 +2,8 @@
 // Created by Cesar Erebus on 10/12/21.
 //
 
-#ifndef DAY05_PRESIDENTIALPARDONFORM_HPP
-#define DAY05_PRESIDENTIALPARDONFORM_HPP
-
-
-
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include "Form.hpp"
 
@@ -38,4 +33,3 @@ std::ostream &operator<<(std::ostream &out, PresidentialPardonForm scf);
 
 #endif
 
-#endif //DAY05_PRESIDENTIALPARDONFORM_HPP

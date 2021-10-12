@@ -4,6 +4,7 @@
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
 
@@ -12,6 +13,7 @@ int main() {
 	Bureaucrat susanne("Susanne", 1);
 	Bureaucrat junDev("Junior Developer", 138);
 	Bureaucrat senDev("Senior Developer", 45);
+	Bureaucrat androDev("AndroDev", 3);
 
 	std:: cout	<< tom << std::endl;
 	std:: cout	<< susanne << std::endl;
@@ -93,5 +95,53 @@ int main() {
 	catch (RobotomyRequestForm::GradeTooLowException &e) {
 		printMsg("form " + roboForm.getName() + " can't be executed by Senior Developer cause he or she hasn't appropriate rights");
 	}
+
+
+
+
+//------------------------------//
+//NEXT FORM: PresidentalPardonForm//
+//------------------------------//
+
+
+	printMsg("\n\nTESTS PresidentialPardonForm");
+	printMsg("\nTEST #0-----generate PresidentialPardonForm------");
+	std::string str2 = "JunDev";
+	PresidentialPardonForm pardonForm(str2);
+	std::cout << pardonForm << std::endl;
+	printMsg("SUCSESS!");
+
+
+	printMsg("\nTEST #1-----try exec PresidentialPardonForm------");
+	try {
+		pardonForm.tryExec(tom);
+	} catch (PresidentialPardonForm::FormNotSignedException &e) {
+		printMsg("form " + pardonForm.getName() + " is not signed! Execution stops");
+	}
+
+	printMsg("\nTEST #2-----sign and try exec again PresidentialPardonForm------");
+
+	try {
+		pardonForm.beSigned(susanne);
+		pardonForm.tryExec(tom);
+	}
+	catch (PresidentialPardonForm::FormNotSignedException &e) {
+		printMsg("form " + pardonForm.getName() + " is not signed! Execution stops");
+	}
+	catch (PresidentialPardonForm::GradeTooLowException &e) {
+		printMsg("form " + pardonForm.getName() + " can't be executed by Junior Developer cause he or she hasn't appropriate rights");
+	}
+
+	printMsg("\nTEST #3-----try exec PresidentialPardonForm by Amazing and Graded Android-Developer------");
+	std::cout << androDev << std::endl;
+
+	try {
+		pardonForm.tryExec(androDev);
+	}
+	catch (PresidentialPardonForm::GradeTooLowException &e) {
+		printMsg("form " + pardonForm.getName() + " can't be executed by Senior Developer cause he or she hasn't appropriate rights");
+	}
+
+
 
 }
