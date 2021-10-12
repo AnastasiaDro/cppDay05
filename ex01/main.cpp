@@ -11,6 +11,7 @@ int main() {
 	Form form1("Form1", 50, 5);
 	Form form2("Form2", 90, 100);
 
+
 	std:: cout	<< tom << std::endl;
 	std:: cout	<< susanne << std::endl;
 	std:: cout	<< form1 <<std::endl;
@@ -75,6 +76,10 @@ int main() {
 		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
 	}
 
+	printMsg("\n*****-CANCELING THE SIGNATURES-*****");
+	form1.setIsSigned(false);
+	form2.setIsSigned(false);
+
 	printMsg("\n---TEST #4---");
 	printMsg("Susanne, you're demoted");
 	try {
@@ -83,6 +88,9 @@ int main() {
 		std::cout << "CATCH: " << susanne << " can't increment her grade" << std::endl;
 	}
 	std::cout << susanne << std::endl;
+
+
+
 
 	printMsg("Form1, Susanne");
 	try {
