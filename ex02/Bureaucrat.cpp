@@ -56,6 +56,12 @@ void Bureaucrat::setGrade(int grade) {
 	_grade = grade;
 }
 
+
+////TODO
+void Bureaucrat::executeForm(const Form &form) {
+
+}
+
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
 {
 	printMsg("BUREAUCRAT___EXCEPTION CAUGHT!!! GradeTooHighException");

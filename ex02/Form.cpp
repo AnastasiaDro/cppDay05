@@ -89,6 +89,7 @@ void Form::tryExec(const Bureaucrat &executor) {
 		throw FormNotSignedException("FormNotSignedException");
 	if (!this->isExecGrade(executor))
 		throw GradeTooLowException("GradeToLowException");
+	printMsg(executor.getName() + " executing " + this->getName());
 	execute(executor);
 }
 
@@ -101,17 +102,17 @@ bool Form::isExecGrade(const Bureaucrat &executor) const {
 
 Form::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
 {
-	printMsg("FORM__GradeTooHighException__CAUGHT!!! " + err);
+	printMsg("CAUGHT " + err);
 }
 
 Form::GradeTooLowException::GradeTooLowException(const std::string &err) : logic_error(err)
 {
-	printMsg("FORM___GradeTooLowException__CAUGHT!!! " + err);
+	printMsg("CAUGHT " + err);
 }
 
 Form::FormNotSignedException::FormNotSignedException(const std::string &err) : logic_error(err)
 {
-	printMsg("FORM___FormNotSignedException__CAUGHT!!! " + err);
+	printMsg("CAUGHT " + err);
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &b)

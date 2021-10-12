@@ -12,6 +12,10 @@ int main() {
 	Form form2("Form2", 90, 100);
 
 
+
+
+
+
 	std:: cout	<< tom << std::endl;
 	std:: cout	<< susanne << std::endl;
 	std:: cout	<< form1 <<std::endl;

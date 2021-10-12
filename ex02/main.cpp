@@ -2,119 +2,49 @@
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main() {
 
 	//naming constructor
 	Bureaucrat tom("Tom"); //autograde = 75
 	Bureaucrat susanne("Susanne", 1);
-	Form form1("Form1", 50, 5);
-	Form form2("Form2", 90, 100);
-
+	Bureaucrat junDev("Junior Developer", 138);
 
 	std:: cout	<< tom << std::endl;
 	std:: cout	<< susanne << std::endl;
-	std:: cout	<< form1 <<std::endl;
-	std:: cout	<< form2 <<std::endl;
 
-	printMsg("---TEST #0---");
-	printMsg("Let's try to create invalid forms!");
-	try{
-		printMsg("invalid signGrade: 151");
-		Form invForm1("invForm1", 151, 50);
-	}
-	catch (Form::GradeTooLowException &e) {
-		printMsg("Form signGrade is too low");
-	}
-	try{
-		printMsg("invalid signGrade: 0");
-		Form invForm2("invForm2", 0, 50);
-	}
-	catch (Form::GradeTooHighException &e) {
-		printMsg("Form signGrade is too high");
-	}
-
-	try{
-		printMsg("invalid execGrade: 151");
-		Form invForm1("invForm1", 50, 151);
-	}
-	catch (Form::GradeTooLowException &e) {
-		printMsg("CATCH: Form execGrade is too low");
-	}
-	try{
-		printMsg("invalid execGradee: 0");
-		Form invForm3("invForm2", 50, 0);
-	}
-	catch (Form::GradeTooHighException &e) {
-		printMsg("CATCH: Form signGrade is too high");
-	}
+	printMsg("\nTEST #0-----generate ShrubberyCreationForm------");
+	std::string str = "home";
+	ShrubberyCreationForm treeForm(str);
+	std::cout << treeForm << std::endl;
+	printMsg("SUCSESS!");
 
 
-	printMsg("\n Let's sign valid forms, guys!");
-
-	printMsg("\n---TEST #1---");
-	printMsg("Tom and Form1 are first");
+	printMsg("\nTEST #1-----try exec ShrubberyCreationForm------");
 	try {
-		form1.beSigned(tom); // can't
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << "CATCH: " << tom << " can't sign" << form1 << std::endl;
+		treeForm.tryExec(susanne);
+	} catch (ShrubberyCreationForm::FormNotSignedException &e) {
+		printMsg("form " + treeForm.getName() + " is not signed! Execution stops");
 	}
 
-	printMsg("\n---TEST #2---");
-	printMsg("Form2, Tom");
+	printMsg("\nTEST #2-----sign and try exec again ShrubberyCreationForm------");
+
 	try {
-		form2.beSigned(tom); // can't
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << "CATCH: "  << tom << " can't sign" << form2 << std::endl;
+		treeForm.beSigned(susanne);
+		treeForm.tryExec(susanne);
+	}
+	catch (ShrubberyCreationForm::FormNotSignedException &e) {
+		printMsg("form " + treeForm.getName() + " is not signed! Execution stops");
 	}
 
-	printMsg("\n---TEST #3---");
-	printMsg("Form1, Susanne");
+	printMsg("\nTEST #3-----try exec ShrubberyCreationForm by low Graded Junior Developer------");
+	std::cout << junDev << std::endl;
+
 	try {
-		form1.beSigned(susanne); // can't
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
+		treeForm.tryExec(junDev);
 	}
-
-	printMsg("\n*****-CANCELING THE SIGNATURES-*****");
-	form1.setIsSigned(false);
-	form2.setIsSigned(false);
-
-	printMsg("\n---TEST #4---");
-	printMsg("Susanne, you're demoted");
-	try {
-		susanne.decrGrade(101);
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << "CATCH: " << susanne << " can't increment her grade" << std::endl;
+	catch (ShrubberyCreationForm::GradeTooLowException &e) {
+		printMsg("form " + treeForm.getName() + " can't be executed by Junior Developer cause he or she hasn't appropriate rights");
 	}
-	std::cout << susanne << std::endl;
-
-
-
-
-	printMsg("Form1, Susanne");
-	try {
-		form1.beSigned(susanne); // can't
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << "CATCH: " << susanne << " can't sign" << form1 << std::endl;
-	}
-
-	printMsg("\n---TEST #5---");
-	printMsg("Tom, you're promoted");
-	try {
-		tom.incGrade(50);
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << "CATCH: " << tom << " can't increment his grade" << std::endl;
-	}
-	std::cout << tom << std::endl;
-
-	printMsg("Form1, Tom");
-	try {
-		form1.beSigned(tom); // can't
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << "CATCH: " << tom << " can't sign" << form1 << std::endl;
-	}
-
-	printMsg("Oh, my God, it works! <OoO>");
-	return 0;
 }

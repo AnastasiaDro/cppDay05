@@ -31,6 +31,42 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
+	std::ofstream fileOut;
+
+	fileOut.open(_target + "_shrubbery");
+	if(!fileOut)
+	{
+		printMsg("can't create/open " + _target + "_shrubbery file!");
+		return; //исключение!
+	}
+	fileOut << drawTree();
+	fileOut.close();
+}
+
+std::string ShrubberyCreationForm::drawTree() {
+
+	std::string tree;
+
+	tree = "                                               |\n"
+		   "                                              -x-\n"
+		   "                                               |\n"
+		   "              v .   ._, |_  .,\n"
+		   "           `-._\\/  .  \\ /    |/_\n"
+		   "               \\\\  _\\, y | \\//\n"
+		   "         _\\_.___\\\\, \\\\/ -.\\||\n"
+		   "           `7-,--.`._||  / / ,\n"
+		   "           /'     `-. `./ / |/_.'\n"
+		   "                     |    |//\n"
+		   "                     |_    /\n"
+		   "                     |-   |\n"
+		   "                     |   =|\n"
+		   "                     |    |\n"
+		   "--------------------/ ,  . \\--------._\n"
+		   "Igdrasil";
+	return tree;
+}
+
 std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm scf)
 {
 	std::cout	<< scf.getName()
@@ -39,8 +75,7 @@ std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm scf)
 				<< ", exec grade "
 				<< scf.getExecGrade()
 				<< ", target "
-				<< scf.getTarget()
-				<< std::endl;
+				<< scf.getTarget();
 	return out;
 }
 

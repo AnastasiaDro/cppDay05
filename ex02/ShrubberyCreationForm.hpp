@@ -7,6 +7,7 @@
 
 
 #include "Form.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public virtual Form {
 private:
@@ -15,7 +16,7 @@ private:
 	std::string	_target;
 public:
 //subject constructor
-	ShrubberyCreationForm(std::string	&target);
+	ShrubberyCreationForm(std::string &target);
 //copy constructor
 	ShrubberyCreationForm(const ShrubberyCreationForm &orig);
 //detructor
@@ -24,6 +25,11 @@ public:
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &orig);
 
 	const std::string &getTarget();
+
+//execute
+	virtual void execute(Bureaucrat const & executor) const;
+
+	static std::string drawTree();
 };
 
 std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm scf);

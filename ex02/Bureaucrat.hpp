@@ -7,6 +7,7 @@
 
 
 #include <string>
+class Form;
 
 class Bureaucrat {
 private:
@@ -26,7 +27,7 @@ public:
 	~Bureaucrat();
 //assignment operator
 	Bureaucrat &operator=(const Bureaucrat &orig);
-
+	void executeForm(Form const & form);
 //getters
 	const	std::string &getName() const;
 	int		getGrade() const;
