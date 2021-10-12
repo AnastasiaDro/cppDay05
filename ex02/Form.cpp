@@ -86,9 +86,15 @@ void Form::execute(const Bureaucrat &executor) const {
 
 void Form::tryExec(const Bureaucrat &executor) {
 	if (!this->isSigned())
+	{
+		printMsg("Failure!");
 		throw FormNotSignedException("FormNotSignedException");
+	}
 	if (!this->isExecGrade(executor))
+	{
+		printMsg("Failure!");
 		throw GradeTooLowException("GradeToLowException");
+	}
 	printMsg(executor.getName() + " executing " + this->getName());
 	execute(executor);
 }
