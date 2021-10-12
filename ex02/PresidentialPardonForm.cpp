@@ -6,9 +6,9 @@
 #include "PresidentialPardonForm.hpp"
 
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("RobotomyRequestForm", 72, 45) {}
+PresidentialPardonForm::PresidentialPardonForm() : Form("RobotomyRequestForm", 25, 5) {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string &target) : Form("RobotomyRequestForm", 72, 45),
+PresidentialPardonForm::PresidentialPardonForm(std::string &target) : Form("RobotomyRequestForm", 25, 5),
 																_target(target){}
 
 const std::string &PresidentialPardonForm::getTarget(){
