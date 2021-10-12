@@ -40,7 +40,7 @@ public:
 	void beSigned(const Bureaucrat &b);
 
 //exec
-	virtual void tryExec(Bureaucrat const & executor);
+	virtual void tryExec(Bureaucrat const & executor) const;
 	bool isExecGrade(Bureaucrat const & executor) const;
 	virtual void execute(Bureaucrat const & executor) const = 0; //subject func, made Form-class Abstract
 

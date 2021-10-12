@@ -84,7 +84,7 @@ void Form::execute(const Bureaucrat &executor) const {
 
 }
 
-void Form::tryExec(const Bureaucrat &executor) {
+void Form::tryExec(const Bureaucrat &executor) const {
 	if (!this->isSigned())
 	{
 		printMsg("Failure!");

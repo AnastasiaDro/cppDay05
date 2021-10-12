@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "../ex02/Form.hpp"
 
 Bureaucrat::Bureaucrat() {}
 
@@ -59,8 +60,9 @@ void Bureaucrat::setGrade(int grade) {
 
 ////TODO
 void Bureaucrat::executeForm(const Form &form) {
-
+	form.tryExec(*this);
 }
+
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &err) : logic_error(err)
 {
