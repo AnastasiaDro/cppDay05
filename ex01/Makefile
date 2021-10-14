@@ -9,6 +9,8 @@ OBJS = $(SRC:.cpp=.o)
 CXX = clang++
 RM = rm -rf
 
+FILE_EXT = *_shrubbery
+
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp	$(HEAD) Makefile
@@ -24,6 +26,7 @@ clean:
 
 fclean:		clean
 			@$(RM) $(NAME)
+			@$(RM) $(FILE_EXT)
 
 re:			fclean all
 

@@ -1,4 +1,4 @@
-NAME = ex01
+NAME = ex02
 
 SRC = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
@@ -8,6 +8,8 @@ OBJS = $(SRC:.cpp=.o)
 
 CXX = clang++
 RM = rm -rf
+
+FILE_EXT = *_shrubbery
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -24,6 +26,7 @@ clean:
 
 fclean:		clean
 			@$(RM) $(NAME)
+			@$(RM) $(FILE_EXT)
 
 re:			fclean all
 
