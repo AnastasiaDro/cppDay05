@@ -58,8 +58,7 @@ void Bureaucrat::setGrade(int grade) {
 }
 
 
-////TODO
-void Bureaucrat::executeForm(const Form &form) {
+void Bureaucrat::executeForm(const Form &form) const {
 	try {
 		form.tryExec(*this);
 	} catch (Form::FormNotSignedException &e) {
@@ -67,7 +66,6 @@ void Bureaucrat::executeForm(const Form &form) {
 	} catch (Form::GradeTooLowException &e){
 		printMsg("form " + form.getName() + " can't be executed by " + this->getName() + " cause he or she hasn't appropriate rights");
 	}
-
 }
 
 

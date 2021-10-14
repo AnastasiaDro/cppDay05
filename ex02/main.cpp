@@ -65,12 +65,9 @@ int main() {
 
 
 
-
-
 //------------------------------//
 //NEXT FORM: PresidentalPardonForm//
 //------------------------------//
-
 
 	printMsg("\n\nTESTS PresidentialPardonForm");
 	printMsg("\nTEST #0-----generate PresidentialPardonForm------");
@@ -81,7 +78,7 @@ int main() {
 
 
 	printMsg("\nTEST #1-----try exec PresidentialPardonForm------");
-tom.executeForm(pardonForm);
+	tom.executeForm(pardonForm);
 
 	printMsg("\nTEST #2-----sign and try exec again PresidentialPardonForm------");
 
@@ -91,5 +88,4 @@ tom.executeForm(pardonForm);
 	printMsg("\nTEST #3-----try exec PresidentialPardonForm by Amazing and Graded Android-Developer------");
 	std::cout << androDev << std::endl;
 	androDev.executeForm(pardonForm);
-
 }

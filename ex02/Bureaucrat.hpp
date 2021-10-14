@@ -27,11 +27,11 @@ public:
 	~Bureaucrat();
 //assignment operator
 	Bureaucrat &operator=(const Bureaucrat &orig);
-	void executeForm(Form const & form);
+	void executeForm(Form const & form) const;
 //getters
 	const	std::string &getName() const;
 	int		getGrade() const;
-	void setGrade(int grade);
+	void 	setGrade(int grade);
 
 //_grade operarions
 	void 	incGrade(int n);
