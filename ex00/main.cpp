@@ -29,13 +29,13 @@ int main() {
 		susanne.incGrade(5);
 	} catch (Bureaucrat::GradeTooHighException &e){
 		std::cout << susanne << " can't increment her grade" << std::endl;
-		//worked just first block
+		//worked just second block
 	} catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << tom << " can't decrement his grade" << std::endl;
 	}
 
 	try {
-		tom.incGrade(40); // has 75 now 75 + 80 = 155 but the lowest is 150
+		tom.incGrade(40);
 		susanne.decrGrade(100);
 	} catch (Bureaucrat::GradeTooHighException &e){
 		std::cout << susanne << " can't increment her grade" << std::endl;
@@ -44,5 +44,15 @@ int main() {
 	}
 	std::cout << tom << std::endl;
 	std::cout << susanne << std::endl;
+
+	printMsg("\n\n---Let's catch our exception as general \"exception\"---");
+	try {
+		tom.incGrade(100);
+	} catch (std::exception &e)
+	{
+		std::cout << tom << " can't increment his grade\n\n" << std::endl;
+	}
+
+
 	return 0;
 }
