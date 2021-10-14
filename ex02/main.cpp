@@ -15,8 +15,8 @@ int main() {
 	Bureaucrat senDev("Senior Developer", 45);
 	Bureaucrat androDev("AndroDev", 3);
 
-	std:: cout	<< tom << std::endl;
-	std:: cout	<< susanne << std::endl;
+	std::cout << tom << std::endl;
+	std::cout << susanne << std::endl;
 
 	printMsg("TESTS ShrubberyCreationForm");
 	printMsg("\nTEST #0-----generate ShrubberyCreationForm------");
@@ -27,31 +27,16 @@ int main() {
 
 
 	printMsg("\nTEST #1-----try exec ShrubberyCreationForm------");
-	try {
-		treeForm.tryExec(susanne);
-	} catch (ShrubberyCreationForm::FormNotSignedException &e) {
-		printMsg("form " + treeForm.getName() + " is not signed! Execution stops");
-	}
+	susanne.executeForm(treeForm);
 
 	printMsg("\nTEST #2-----sign and try exec again ShrubberyCreationForm------");
-
-	try {
-		treeForm.beSigned(susanne);
-		treeForm.tryExec(susanne);
-	}
-	catch (ShrubberyCreationForm::FormNotSignedException &e) {
-		printMsg("form " + treeForm.getName() + " is not signed! Execution stops");
-	}
+	treeForm.beSigned(susanne);
+	susanne.executeForm(treeForm);
 
 	printMsg("\nTEST #3-----try exec ShrubberyCreationForm by low Graded Junior Developer------");
 	std::cout << junDev << std::endl;
 
-	try {
-		treeForm.tryExec(junDev);
-	}
-	catch (ShrubberyCreationForm::GradeTooLowException &e) {
-		printMsg("form " + treeForm.getName() + " can't be executed by Junior Developer cause he or she hasn't appropriate rights");
-	}
+	junDev.executeForm(treeForm);
 
 //------------------------------//
 //NEXT FORM: RobotomyRequestForm//
@@ -65,36 +50,19 @@ int main() {
 	std::cout << roboForm << std::endl;
 	printMsg("SUCSESS!");
 
-
 	printMsg("\nTEST #1-----try exec RobotomyRequestForm------");
-	try {
-		roboForm.tryExec(tom);
-	} catch (RobotomyRequestForm::FormNotSignedException &e) {
-		printMsg("form " + roboForm.getName() + " is not signed! Execution stops");
-	}
+	tom.executeForm(roboForm);
+
 
 	printMsg("\nTEST #2-----sign and try exec again RobotomyRequestForm------");
-
-	try {
-		roboForm.beSigned(susanne);
-		roboForm.tryExec(tom);
-	}
-	catch (RobotomyRequestForm::FormNotSignedException &e) {
-		printMsg("form " + roboForm.getName() + " is not signed! Execution stops");
-	}
-	catch (RobotomyRequestForm::GradeTooLowException &e) {
-		printMsg("form " + roboForm.getName() + " can't be executed by Junior Developer cause he or she hasn't appropriate rights");
-	}
+	roboForm.beSigned(susanne);
+	tom.executeForm(roboForm);
 
 	printMsg("\nTEST #3-----try exec RobotomyRequestForm by middle Graded Senior Developer------");
 	std::cout << senDev << std::endl;
+	senDev.executeForm(roboForm);
 
-	try {
-		roboForm.tryExec(senDev);
-	}
-	catch (RobotomyRequestForm::GradeTooLowException &e) {
-		printMsg("form " + roboForm.getName() + " can't be executed by Senior Developer cause he or she hasn't appropriate rights");
-	}
+
 
 
 
@@ -113,35 +81,15 @@ int main() {
 
 
 	printMsg("\nTEST #1-----try exec PresidentialPardonForm------");
-	try {
-		pardonForm.tryExec(tom);
-	} catch (PresidentialPardonForm::FormNotSignedException &e) {
-		printMsg("form " + pardonForm.getName() + " is not signed! Execution stops");
-	}
+tom.executeForm(pardonForm);
 
 	printMsg("\nTEST #2-----sign and try exec again PresidentialPardonForm------");
 
-	try {
-		pardonForm.beSigned(susanne);
-		pardonForm.tryExec(tom);
-	}
-	catch (PresidentialPardonForm::FormNotSignedException &e) {
-		printMsg("form " + pardonForm.getName() + " is not signed! Execution stops");
-	}
-	catch (PresidentialPardonForm::GradeTooLowException &e) {
-		printMsg("form " + pardonForm.getName() + " can't be executed by Junior Developer cause he or she hasn't appropriate rights");
-	}
+	pardonForm.beSigned(susanne);
+	tom.executeForm(pardonForm);
 
 	printMsg("\nTEST #3-----try exec PresidentialPardonForm by Amazing and Graded Android-Developer------");
 	std::cout << androDev << std::endl;
-
-	try {
-		pardonForm.tryExec(androDev);
-	}
-	catch (PresidentialPardonForm::GradeTooLowException &e) {
-		printMsg("form " + pardonForm.getName() + " can't be executed by Senior Developer cause he or she hasn't appropriate rights");
-	}
-
-
+	androDev.executeForm(pardonForm);
 
 }
