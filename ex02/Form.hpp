@@ -40,9 +40,9 @@ public:
 	void beSigned(const Bureaucrat &b);
 
 //exec
-	virtual void tryExec(Bureaucrat const & executor) const;
+	virtual void execute(Bureaucrat const & executor) const; //subject func,
 	bool isExecGrade(Bureaucrat const & executor) const;
-	virtual void execute(Bureaucrat const & executor) const = 0; //subject func, made Form-class Abstract
+	virtual void exec(Bureaucrat const & executor) const = 0;  //made Form-class Abstract
 
 //exception classes
 class GradeTooHighException : public std::logic_error

@@ -60,7 +60,7 @@ void Bureaucrat::setGrade(int grade) {
 
 void Bureaucrat::executeForm(const Form &form) const {
 	try {
-		form.tryExec(*this);
+		form.execute(*this);
 	} catch (Form::FormNotSignedException &e) {
 		printMsg("form " + form.getName() + " is not signed! Execution stops");
 	} catch (Form::GradeTooLowException &e){

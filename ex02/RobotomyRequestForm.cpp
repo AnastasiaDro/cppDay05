@@ -28,8 +28,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	return *this;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
-	printMsg("* Some drilling noises * " + this->_target + " has been robotomized successfully 50% of the time");
+void RobotomyRequestForm::exec(const Bureaucrat &executor) const {
+	printMsg("* Some drilling noises * " + this->_target + " has been robotomized successfully 50% of the time by " + executor.getName());
 }
 
 std::ostream &operator<<(std::ostream &out, RobotomyRequestForm scf)

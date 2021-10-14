@@ -31,15 +31,16 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
+void ShrubberyCreationForm::exec(const Bureaucrat &executor) const {
 	std::ofstream fileOut;
 
 	fileOut.open(_target + "_shrubbery");
 	if(!fileOut)
 	{
-		printMsg("can't create/open " + _target + "_shrubbery file!");
+		printMsg(executor.getName() + " can't create/open " + _target + "_shrubbery file!");
 		return; //исключение!
 	}
+	printMsg(executor.getName() + " planted a tree in the " + this->_target);
 	fileOut << drawTree();
 	fileOut.close();
 }

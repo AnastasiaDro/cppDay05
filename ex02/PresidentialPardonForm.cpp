@@ -29,8 +29,8 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
-	printMsg(this->_target + " has been pardoned by Zafod Beeblebrox");
+void PresidentialPardonForm::exec(const Bureaucrat &executor) const {
+	printMsg(executor.getName() + " organized " + this->_target + " has been pardoned by Zafod Beeblebrox");
 }
 
 std::ostream &operator<<(std::ostream &out, PresidentialPardonForm scf)

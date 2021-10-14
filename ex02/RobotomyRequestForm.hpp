@@ -25,7 +25,7 @@ public:
 	const std::string &getTarget();
 
 //execute
-	virtual void execute(Bureaucrat const & executor) const;
+	virtual void exec(Bureaucrat const & executor) const;
 
 };
 
